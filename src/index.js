@@ -11,10 +11,10 @@ for (const btn of allBtns) {
   btn.addEventListener("click", function (e) {
     const seatId = e.target.innerText; // Get the seat number
 
-    // Handle seat selection and deselection
+    
     handleSeatSelection(e.target, seatId, seatClass, seatPrice);
 
-    // Update the seat count display
+    
     setInnerText("seat-count", count);
   });
 }
@@ -54,7 +54,7 @@ function addRow(seatNumber, seatClass, seatPrice) {
   updateTotalPrice(seatPrice);
 }
 
-// Function to remove a row based on the seat number
+// Function to remove a row 
 function removeRow(seatNumber, seatPrice) {
   const tbody = document.querySelector("tbody");
   const row = tbody.querySelector(`tr[data-seat-id="${seatNumber}"]`); // Find the row with the matching seat number
@@ -66,7 +66,7 @@ function removeRow(seatNumber, seatPrice) {
   }
 }
 
-// Function to handle seat selection and deselection
+// Function to handle seat 
 function handleSeatSelection(button, seatId, seatClass, seatPrice) {
   // Check if the button is already selected
   if (button.classList.contains("selected")) {
