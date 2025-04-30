@@ -105,11 +105,7 @@ function setInnerText(id, value) {
   document.getElementById(id).innerText = value;
 }
 
-
-
-
-
-
+// Function to handle the coupon code application
 const applyBtn = document.getElementById("apply-btn");
 
 applyBtn.addEventListener("click", function () {
@@ -158,7 +154,91 @@ applyBtn.addEventListener("click", function () {
   }
 });  
 
-  
-  
+// Function to clear all input fields
+function clearInputFields() {
+  const inputFields = document.querySelectorAll("input");
+  inputFields.forEach((input) => {
+    input.value = ""; // Clear the value of each input field
+  });
+}
 
+function validatePassengerForm() {
+  const passengerName = document.getElementById("passenger-name").value.trim();
+  const passengerPhone = document.getElementById("passenger-phone").value.trim();
 
+  // Validate passenger name
+  if (!passengerName) {
+    alert("Passenger name is required.");
+    return false;
+  }
+
+  // Validate passenger phone
+  if (!passengerPhone || !/^\d{10}$/.test(passengerPhone)) {
+    alert("Please enter a valid 10-digit phone number.");
+    return false;
+  }
+
+  // Hide all sections in <main>
+  const mainSections = document.querySelectorAll("main > section");
+  mainSections.forEach((section) => {
+    section.classList.add("hidden"); // Hide all sections in <main>
+  });
+
+  // Hide the banner section in <header>
+  const bannerSection = document.getElementById("banner");
+  if (bannerSection) {
+    bannerSection.classList.add("hidden"); // Hide the banner section
+  }
+
+  // Show the "Success" section
+  document.getElementById("success").classList.remove("hidden");
+
+  // Clear all input fields
+  clearInputFields();
+
+  // Reset seat selection
+  resetSeatSelection();
+
+  return true;
+}
+
+// Function to go back to the previous view
+function goBackToPreviousView() {
+  // Show all sections in <main>
+  const mainSections = document.querySelectorAll("main > section");
+  mainSections.forEach((section) => {
+    section.classList.remove("hidden"); // Show all sections in <main>
+  });
+
+  // Show the banner section in <header>
+  const bannerSection = document.getElementById("banner");
+  if (bannerSection) {
+    bannerSection.classList.remove("hidden"); // Show the banner section
+  }
+
+  // Hide the "Success" section
+  document.getElementById("success").classList.add("hidden");
+}
+
+// Function to reset seat selection and related data
+function resetSeatSelection() {
+  // Deselect all selected seats
+  const selectedSeats = document.querySelectorAll(".selected"); // Select all selected seats
+  selectedSeats.forEach((seat) => {
+    seat.classList.remove("selected"); // Remove the "selected" class
+    seat.style.backgroundColor = ""; // Reset the background color
+    seat.style.color = ""; // Reset the text color
+  });
+
+  // Reset the seat count
+  count = 0; // Reset the seat count
+  setInnerText("seat-count", count); // Update the seat count display
+
+  // Reset the total price and grand total
+  setInnerText("totalPrice", 0); // Reset total price to 0
+  setInnerText("grandTotalPrice", 0); // Reset grand total price to 0
+
+  // Remove all selected rows from the table
+  const tbody = document.querySelector("tbody");
+  tbody.innerHTML = ""; // Clear all rows in the table
+}

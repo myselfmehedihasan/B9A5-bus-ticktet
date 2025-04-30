@@ -60,7 +60,7 @@
       </div>
     </nav>
     <!-- Banner -->
-    <section class="container mx-auto relative ">
+    <section id="banner" class="container mx-auto relative ">
       <img src="/images/banner.png" class="w-screen mx-auto  " alt="">
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center ">
         <h1 class="font-raleway text-6xl font-extrabold text-white lg:leading-[86px]">End-to-End Travel with <br> <span
@@ -421,18 +421,21 @@
 
 
           <div class="mt-8">
-            <label for="" class="font-inter font-semibold text-base">Passenger Name*</label>
-            <input type="text" placeholder="Enter your name"
+            <label for="passenger-name" class="font-inter font-semibold text-base">Passenger Name*</label>
+            <input type="text" required id="passenger-name" placeholder="Enter your name"
               class="input input-bordered w-full h-14 rounded-xl mt-2 mb-4 text-[#03071266] text-base font-normal focus:outline-[#1DD100] focus:ring-0" />
-            <label for="" class="font-inter font-semibold text-base">Phone Number*</label>
-            <input type="text" placeholder="Enter your phone number"
+          
+            <label for="passenger-phone" class="font-inter font-semibold text-base">Phone Number*</label>
+            <input type="text" required id="passenger-phone" placeholder="Enter your phone number"
               class="input input-bordered w-full h-14 rounded-xl mt-2 mb-4 text-[#03071266] text-base font-normal focus:outline-[#1DD100] focus:ring-0" />
-            <label for="" class="font-inter font-semibold text-base">Email ID</label>
-            <input type="text" placeholder="Enter your email id"
+          
+            <label for="passenger-email" class="font-inter font-semibold text-base">Email ID</label>
+            <input type="text" id="passenger-email" placeholder="Enter your email id"
               class="input input-bordered w-full h-14 rounded-xl mt-2 mb-4 text-[#03071266] text-base font-normal focus:outline-[#1DD100] focus:ring-0" />
-
+          
             <button
-              class="btn join-item rounded-2xl w-full h-16  right-2 top-2 bg-[#1DD100] text-white text-xl hover:bg-white hover:text-[#1DD100]">Next</button>
+              class="btn join-item rounded-2xl w-full h-16  right-2 top-2 bg-[#1DD100] text-white text-xl hover:bg-white hover:text-[#1DD100]"
+              onclick="validatePassengerForm()">Next</button>
           </div>
 
           <div
@@ -446,7 +449,7 @@
     </section>
 
 
-    <section class="hidden">
+    <section id="success"  class="hidden">
       <div class="flex flex-col justify-center items-center bg-[#F7F8F8] rounded-2xl p-20 max-w-3xl min-h-96 mx-auto">
         <img class="mb-9" src="/images/success.png" alt="">
         <h3 class="text-2xl font-bold text-[#27AE60] mb-9">SUCCESS</h3>
@@ -454,7 +457,7 @@
           We are working hard to find the best service and deals for you.</p>
           <p class="text-center text-xl font-light text-[#4A4A4A] mb-5">Shortly you will find a confirmation in your email.</p>
 
-          <button class="bg-[#27AE60] w-80 h-14 rounded-[32px] text-xl text-white font-semibold">Continue</button>
+          <button class="bg-[#27AE60] w-80 h-14 rounded-[32px] text-xl text-white font-semibold" onclick="goBackToPreviousView()">Continue</button>
       </div>
     </section>
   </main>
